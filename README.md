@@ -33,5 +33,5 @@ Here are some mini projects you’ll find here:
 
 1. Clone the repository:
    ```bash
-   git clone 🔗 [Visit the Repository](https://github.com/thousif-123/Python_mini_projects/)
+   git clone https://github.com/thousif-123/Python_mini_projects/
    cd Python_mini_projects
