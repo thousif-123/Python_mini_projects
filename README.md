@@ -20,8 +20,7 @@ Here are some mini projects you’ll find here:
 
 | Project Name            | Description                                         |
 |-------------------------|-----------------------------------------------------|
-| Calculator              		| A basic GUI calculator using              |
-| To-Do List              		| Console app to manage daily tasks                  |
+| To-Do List              		| A <strong>CLI</strong> to manage daily tasks                  |
 | Quiz game	       			| A quiz game, You will be given 4 options for every questions, you have to choose correct one.|
 |Color Picker game         | This is a random color picker game, which is build using <code>Tkinter</code> Library |   
 
