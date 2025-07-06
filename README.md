@@ -20,10 +20,8 @@ Here are some mini projects you’ll find here:
 
 | Project Name            | Description                                         |
 |-------------------------|-----------------------------------------------------|
-| Calculator              |  A simple <strong>CLI</strong>(Command Line Interface) Calculator.|
-| To-Do List              		| A <strong>CLI</strong> Tool to manage daily tasks                  |
-| Quiz game	       			| A quiz game, You will be given 4 options for every question, you have to choose correct one.|
-|Color Picker game         | This is a random color picker game, which is build using <code>Tkinter</code> Library |   
+| CLI- based contact book  |  A simple CLI(command line interface) based contact book, where you add contacts,view, search contacts like a contacts app in your phone|
+
 
 
 
