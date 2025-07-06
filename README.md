@@ -20,7 +20,7 @@ Here are some mini projects you’ll find here:
 
 | Project Name            | Description                                         |
 |-------------------------|-----------------------------------------------------|
-| CLI- based contact book  |  A simple CLI(command line interface) based contact book, where you add contacts,view, search contacts like a contacts app in your phone|
+| CLI- based contact book  |  A simple CLI(command line interface) based contact book, where you add contacts,view, search contacts like a contacts app in your phone.|
 
 
 
