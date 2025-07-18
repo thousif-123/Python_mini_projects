@@ -20,11 +20,9 @@ Here are some mini projects you’ll find here:
 
 | Project Name            | Description                                         |
 |-------------------------|-----------------------------------------------------|
-| CLI- based contact book  |  A simple CLI(command line interface) based contact book, where you add contacts,view, search contacts like a contacts app in your phone.|
+| Contact book  |  A simple CLI(command line interface) based contact book, where you add contacts,view, search contacts like a contacts app in your phone.|
 | Quiz game         | A series of questions with multiple choice quesions(a,b,c,d), choosing one correct option your score will be updated and display at the end of the quiz,<code>A infotainment game</code> where you can check your knowledge with your freinds.|
-
-
-
+|To-Do App       | A simple and classic <code>GUI</code> Based To do list app With simple features like <b>ADD,DELETE</b> tasks.|
 
 > ✅ More projects coming soon... Stay tuned!
 ---
