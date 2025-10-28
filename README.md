@@ -25,7 +25,9 @@ Here are some mini projects you’ll find here:
 |To-Do App       | A simple and classic <code>GUI</code> Based To do list app With simple features like <b>ADD,DELETE</b> tasks.|
 |color-changing window | window color changes after button press. Code written using <code>Tkinter Library</code>|
 |Password-Manager | A gui based password manager, where you can store your passwords with username and website url or name in text files|
-|Personal-expenses tracker app| A python built expenses tracker app, where you can store and add expenses, filter, search, delete,import. this is built with python' tkinter, sqlite, csv. |
+|Personal-expenses tracker app| A python expenses tracker app, where you can store and add expenses, filter, search, delete,import. this is built with python' tkinter, sqlite, csv. |
+|Digital Tasbih app | A digital tasbih app for spiritual purpose.Wenever we feel overwhlemed of worldy thoughts and need some spiritual peace, a best easy way to remember the creater, almighty,one god.Using this app the technology becomes the way to connect god.|
+
 
 > ✅ More projects coming soon... Stay tuned!
 ---
