@@ -26,7 +26,7 @@ Here are some mini projects you’ll find here:
 |color-changing window | window color changes after button press. Code written using <code>Tkinter Library</code>|
 |Password-Manager | A gui based password manager, where you can store your passwords with username and website url or name in text files|
 |Personal-expenses tracker app| A python expenses tracker app, where you can store and add expenses, filter, search, delete,import. this is built with python' tkinter, sqlite, csv. |
-|Digital Tasbih app | A digital tasbih app for spiritual purpose.Wenever we feel overwhlemed of worldy thoughts and need some spiritual peace, a best easy way to remember the creater, almighty,one god.Using this app the technology becomes the way to connect god.|
+|Digital Tasbih app |A lightweight digital tasbih built with Python to track and manage your dhikr counts effortlessly.|
 
 
 > ✅ More projects coming soon... Stay tuned!
