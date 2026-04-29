@@ -9,46 +9,48 @@ DATE_FORMAT = "%Y-%m-%d"
 
 # ----------------- Database helpers -----------------
 def init_db():
-    conn = sqlite3.connect(DB_FILE)
-    cur = conn.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS expenses (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            expense_date TEXT NOT NULL,
-            category TEXT NOT NULL,
-            amount REAL NOT NULL,
-            description TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(DB_FILE) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS expenses (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                expense_date TEXT NOT NULL,
+                category TEXT NOT NULL,
+                amount REAL NOT NULL,
+                description TEXT
+            )
+        """)
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_expenses_date ON expenses(expense_date)")
 
 def add_expense_db(expense_date, category, amount, description):
-    conn = sqlite3.connect(DB_FILE)
-    cur = conn.cursor()
-    cur.execute("INSERT INTO expenses (expense_date, category, amount, description) VALUES (?, ?, ?, ?)",
-                (expense_date, category, amount, description))
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(DB_FILE) as conn:
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO expenses (expense_date, category, amount, description) VALUES (?, ?, ?, ?)",
+            (expense_date, category, amount, description),
+        )
 
 def delete_expense_db(expense_id):
-    conn = sqlite3.connect(DB_FILE)
-    cur = conn.cursor()
-    cur.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
-    conn.commit()
-    conn.close()
+    with sqlite3.connect(DB_FILE) as conn:
+        cur = conn.cursor()
+        cur.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
+
+def delete_expenses_db(expense_ids):
+    with sqlite3.connect(DB_FILE) as conn:
+        cur = conn.cursor()
+        cur.executemany("DELETE FROM expenses WHERE id = ?", ((eid,) for eid in expense_ids))
 
 def query_expenses(start_date=None, end_date=None):
-    conn = sqlite3.connect(DB_FILE)
-    cur = conn.cursor()
-    if start_date and end_date:
-        cur.execute("SELECT id, expense_date, category, amount, description FROM expenses WHERE expense_date BETWEEN ? AND ? ORDER BY expense_date DESC",
-                    (start_date, end_date))
-    else:
-        cur.execute("SELECT id, expense_date, category, amount, description FROM expenses ORDER BY expense_date DESC")
-    rows = cur.fetchall()
-    conn.close()
-    return rows
+    with sqlite3.connect(DB_FILE) as conn:
+        cur = conn.cursor()
+        if start_date and end_date:
+            cur.execute(
+                "SELECT id, expense_date, category, amount, description FROM expenses WHERE expense_date BETWEEN ? AND ? ORDER BY expense_date DESC",
+                (start_date, end_date),
+            )
+        else:
+            cur.execute("SELECT id, expense_date, category, amount, description FROM expenses ORDER BY expense_date DESC")
+        return cur.fetchall()
 
 def sum_expenses(rows):
     return sum(r[3] for r in rows) 
@@ -178,8 +180,9 @@ class ExpenseTracker:
 
     def _populate_tree(self, rows):
        
-        for r in self.tree.get_children():
-            self.tree.delete(r)
+        children = self.tree.get_children()
+        if children:
+            self.tree.delete(*children)
       
         for row in rows:
             _id, exp_date, cat, amt, desc = row
@@ -194,10 +197,8 @@ class ExpenseTracker:
             return
         if not messagebox.askyesno("Confirm", "Delete selected entries?"):
             return
-        for item in sel:
-            vals = self.tree.item(item, "values")
-            expense_id = vals[0]
-            delete_expense_db(expense_id)
+        expense_ids = [self.tree.item(item, "values")[0] for item in sel]
+        delete_expenses_db(expense_ids)
         self.refresh_table()
 
     def filter_range(self):
